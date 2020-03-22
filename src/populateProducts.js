@@ -22,15 +22,15 @@ const populateProducts = () => {
   //show data
   filteredProductData.map(productData => {
     const productInfo = Object.values(productData)
-      const productDataContainer = document.createElement("ul")
-      fragment.appendChild(productDataContainer)
-      productInfo.map(data => {
-        const info = document.createElement("li")
-        info.textContent = data
-        productDataContainer.appendChild(info)
-      })
+    const productDataContainer = document.createElement("ul")
+    fragment.appendChild(productDataContainer)
+    productInfo.map(data => {
+      const info = document.createElement("li")
+      info.textContent = data
+      productDataContainer.appendChild(info)
     })
-
+    
+  })
   productsContainer.appendChild(fragment)
 
   console.log('populate them products')

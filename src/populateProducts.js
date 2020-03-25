@@ -1,38 +1,52 @@
 import products from "./products.js";
+import addToCart from "./incDecCart.js"
+import cart from "./cart.js"
+
 
 const populateProducts = () => {
-  const productsContainer = document.querySelector("[data-products-container")
   const fragment = document.createDocumentFragment()
+  const productsContainer = document.querySelector("[data-products-container]")
   
-  //filter product data by required keys to be displayed
-  const infoToShow = ["name", "price"]
-  const filteredProductData = []
-  products.map(product => {
-    const filtered = Object.keys(product)
-    .filter(key => infoToShow.includes(key))
-    //double check what this reduce is doing
-    .reduce((obj, key) => {
-      obj[key] = product[key]
-      return obj
-    }, {})
-    filteredProductData.push(filtered)
-    }
-  )
+  products.map(productData => {
 
-  //show data
-  filteredProductData.map(productData => {
-    const productInfo = Object.values(productData)
-    const productDataContainer = document.createElement("ul")
+    //show data
+    const productDataContainer = document.createElement("li")
     fragment.appendChild(productDataContainer)
-    productInfo.map(data => {
-      const info = document.createElement("li")
-      info.textContent = data
-      productDataContainer.appendChild(info)
-    })
+    const productInfo = document.createElement("h3")
+    productDataContainer.appendChild(productInfo)
+    productInfo.textContent = `This is the inner ${productData.name} ($${productData.price})`
     
-  })
-  productsContainer.appendChild(fragment)
+    //attach buttons
+    const buttonsContainer = document.createElement("div")
 
+    const decButton = document.createElement("button")
+    decButton.setAttribute('data-decrease', productData.id)
+    decButton.textContent = '-'
+    buttonsContainer.appendChild(decButton)
+
+    const prodTotal = document.createElement("p")
+    prodTotal.setAttribute('data-total', productData.id)
+    prodTotal.textContent = '0'
+    buttonsContainer.appendChild(prodTotal)
+
+    const incButton = document.createElement("button")
+    incButton.setAttribute('data-increase', productData.id)
+    incButton.textContent = '+'
+    //attach functions to buttons
+    incButton.addEventListener('click', (e) => {
+      addToCart(cart, e.target.dataset.increase)
+    })
+      
+    buttonsContainer.appendChild(incButton)
+    
+    
+
+    productDataContainer.appendChild(buttonsContainer)
+
+
+  })
+
+  productsContainer.appendChild(fragment)
   console.log('populate them products')
 }
 

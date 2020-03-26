@@ -1,14 +1,7 @@
-const cart = {
-  products:[
-    {
-      "productId": 1,
-      "quantity": 6
-    },
-    {
-      "productId": 3,
-      "quantity": 1
-    }
-  ] 
+let cart = {
+  products:[] 
 }
 
-export default cart
+const updateCart = (newCart) => cart = newCart 
+
+export {cart, updateCart}

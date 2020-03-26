@@ -1,8 +1,6 @@
 import products from "./products.js";
 import addToCart from "./incDecCart.js"
-import cart from "./cart.js"
 
-console.log('cart', cart)
 const populateProducts = () => {
   const fragment = document.createDocumentFragment()
   const productsContainer = document.querySelector("[data-products-container]")
@@ -33,7 +31,7 @@ const populateProducts = () => {
     incButton.setAttribute('data-increase', productData.id)
     incButton.textContent = '+'
     incButton.addEventListener('click', (e) => {
-      addToCart(cart, e.target.dataset.increase)
+      addToCart(e.target.dataset.increase)
     })
       
     buttonsContainer.appendChild(incButton)

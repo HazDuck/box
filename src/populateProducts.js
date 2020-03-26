@@ -38,12 +38,7 @@ const populateProducts = () => {
     })
       
     buttonsContainer.appendChild(incButton)
-    
-    
-
     productDataContainer.appendChild(buttonsContainer)
-
-
   })
 
   productsContainer.appendChild(fragment)

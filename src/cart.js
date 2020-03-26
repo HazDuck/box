@@ -1,5 +1,6 @@
 let cart = {
-  products:[] 
+  products:[],
+  totalPrice: 77
 }
 
 const updateCart = (newCart) => cart = newCart 

@@ -1,5 +1,7 @@
 import updateTextContent from "./updateTextContent.js";
 import {cart, updateCart} from "./cart.js"
+import findProductPrice from "./findProductPrice.js"
+
 
 //i think it would be fine to mutate the cart directly but want to practice not
 //mutating state for react/redux work
@@ -18,11 +20,13 @@ const addToCart = (productId) => {
         updateTextContent(document.querySelector(`[data-total="${productId}"`), product.quantity,  0)
       }
     })
+    console.log(cart)
     //else add a new product to the cart
     } else {
-    const newCart = Object.assign({}, cart, {products: [...cart.products, {productId: parseInt(productId), quantity: 1}]})
+    const newCart = Object.assign({}, cart, {products: [...cart.products, {productId: parseInt(productId), quantity: 1, productTotal: findProductPrice(productId)}]})
     updateCart(newCart)
-    updateTextContent(document.querySelector(`[data-total="${productId}"`), 1, 77 )
+    updateTextContent(document.querySelector(`[data-total="${productId}"`), 1, 0)
+    console.log(cart)
   }
 }
 

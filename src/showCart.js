@@ -1,35 +1,14 @@
-// import { cart, updateCart } from "./cart.js";
+import { cart, updateCart } from "./cart.js";
+import products from "./products.js"
 
-// const showCart = (cart) => {
-    
-//       cart.products.map(product => {
-//         `<tr data-product="${product.id}"><td>${product.name}
-//         </td><td>${}</td>`
-//       })
-      
-
-//       <tr>
-//         <td>Small</td>
-//         <td>0</td>
-//         <td>$0</td>
-//       </tr>
-//       <tr>
-//         <td>Small</td>
-//         <td>0</td>
-//         <td>$0</td>
-//       </tr>
-//       <tr>
-//         <td>Small</td>
-//         <td>0</td>
-//         <td>$0</td>
-//       </tr>
-//       <tr>
-//         <td>Total Price</td>
-//         <td>$0</td>
-//       </tr>
+const showCart = () => {
+  const populateCart = () => products.map(product => `<tr data-product=${product.id}><td>${product.name}</td><td>cat</td><td>dog</td></tr>`)
   
+  const cartContainer = document.querySelector("[data-cart-container]")
+  cartContainer.innerHTML = populateCart()
+}
 
-// }
 
-// export default showCart
+
+export default showCart
 

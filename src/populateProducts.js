@@ -1,5 +1,5 @@
 import products from "./products.js";
-import addToCart from "./incDecCart.js"
+import {addToCart, removeFromCart} from "./incDecCart.js"
 
 const populateProducts = () => {
   const fragment = document.createDocumentFragment()
@@ -21,6 +21,9 @@ const populateProducts = () => {
     decButton.setAttribute('data-decrease', productData.id)
     decButton.textContent = '-'
     buttonsContainer.appendChild(decButton)
+    decButton.addEventListener('click', (e) => {
+      removeFromCart(e.target.dataset.decrease)
+    })
 
     const prodTotal = document.createElement("p")
     prodTotal.setAttribute('data-total', productData.id)

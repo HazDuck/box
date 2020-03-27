@@ -1,10 +1,9 @@
 import updateTextContent from "./updateTextContent.js";
 import {cart, updateCart} from "./cart.js"
 import findProductPrice from "./findProductPrice.js"
+import showCart from "./showCart.js";
 
-
-//i think it would be fine to mutate the cart directly but want to practice not
-//mutating state for react/redux work
+//i think it would be fine to mutate the cart directly but want to practice not mutating state for react/redux work
 
 const addToCart = (productId) => {
   //is the product already in the cart?
@@ -20,28 +19,31 @@ const addToCart = (productId) => {
         updateTextContent(document.querySelector(`[data-total="${productId}"`), product.quantity,  0)
       }
     })
+    showCart()
     console.log(cart)
     //else add a new product to the cart
-    } else {
-    const newCart = Object.assign({}, cart, {products: [...cart.products, {productId: parseInt(productId), quantity: 1, productTotal: findProductPrice(productId)}]})
+  } else {
+    const newCart = Object.assign({}, cart, {products: [...cart.products, {productId: parseInt(productId), quantity: 1, price: findProductPrice(productId)}]})
     updateCart(newCart)
     updateTextContent(document.querySelector(`[data-total="${productId}"`), 1, 0)
+    showCart()
     console.log(cart)
   }
 }
 
 const removeFromCart = (productId) => {
   if (!cart.products.findIndex(product => productId == product.productId) >= 0) {
-  const productToReduce = cart.products.filter(product => product.productId == productId)[0]
-  const cleanCart = Object.assign({}, cart, {products: [...cart.products.filter(product => product.productId != productId)]})
-  const reducedProduct = Object.assign({}, productToReduce, {quantity: productToReduce.quantity > 1 ? productToReduce.quantity-=1 : 0})
-  const newCart = Object.assign({}, cleanCart, {products: [...cleanCart.products, reducedProduct ]})
-  updateCart(newCart)
-  cart.products.forEach(product => {
-    if (product.productId == productId) {
-      updateTextContent(document.querySelector(`[data-total="${productId}"`), product.quantity, 0)
-    }
-  })
+    const productToReduce = cart.products.filter(product => product.productId == productId)[0]
+    const cleanCart = Object.assign({}, cart, {products: [...cart.products.filter(product => product.productId != productId)]})
+    const reducedProduct = Object.assign({}, productToReduce, {quantity: productToReduce.quantity > 1 ? productToReduce.quantity-=1 : 0})
+    const newCart = Object.assign({}, cleanCart, {products: [...cleanCart.products, reducedProduct ]})
+    updateCart(newCart)
+    cart.products.forEach(product => {
+      if (product.productId == productId) {
+        updateTextContent(document.querySelector(`[data-total="${productId}"`), product.quantity, 0)
+      }
+    })
+    showCart()
 } else {
   return
   }

@@ -5,7 +5,7 @@ let cart = {
 
 const calculateTotalPrice = cart => {
   const totalPrice = cart.products.map(product => product.price * product.quantity).reduce((total, num) => total + num)
-  cart.totalPrice = totalPrice
+  cart.strength ? cart.totalPrice = totalPrice * cart.strength : cart.totalPrice = totalPrice
   return cart
 }
 

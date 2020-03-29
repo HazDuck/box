@@ -1,4 +1,5 @@
 import {cart, updateCart} from "./cart.js"
+import showCart from "./showCart.js";
 
 const showStrength = () => {
   const strengthSelect = document.createElement("div")
@@ -9,9 +10,9 @@ const showStrength = () => {
       <input type="radio" id="standard" name="strength" value="0" checked>
       <label for="male">Standard</label><br>
       <input type="radio" id="strong" name="strength" value="1.1">
-      <label for="female">Strong</label><br>
+      <label for="female">Strong +10%</label><br>
       <input type="radio" id="xxxstrong" name="strength" value="1.25">
-      <label for="other">Extra Strong</label>
+      <label for="other">Extra Strong +25%</label>
       <button type="submit" name data-continue="strength">Continue</button>
     </form>  
     `
@@ -23,6 +24,7 @@ const showStrength = () => {
     const strength = document.querySelector('input[name="strength"]:checked').value
     const newCart = Object.assign({}, cart, {strength: strength})
     updateCart(newCart)
+    showCart()
     console.log(cart)
     // document.querySelector('[main-container]').replaceChild(
     //   //form node here ** 

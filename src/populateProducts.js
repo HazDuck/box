@@ -1,4 +1,4 @@
-import {products, productsFetch} from "./products.js";
+import {products} from "./products.js";
 import {addToCart, removeFromCart} from "./incDecCart.js"
 
 const populateProducts = () => {
@@ -47,7 +47,6 @@ const populateProducts = () => {
   })
 
   productsContainer.appendChild(fragment)
-  console.log('populate them products')
 }
 
 export default populateProducts

@@ -1,7 +1,12 @@
 import { cart } from "./cart.js";
-import {products, productsFetch} from "./products.js";
+import {products} from "./products.js";
 
 const showCart = () => {
+
+  if (!products) {
+    console.log("aye there be no products!")
+    return
+  }
 
   const calculatePrice = product => product.quantity*product.price
 

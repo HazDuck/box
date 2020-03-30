@@ -1,4 +1,4 @@
-import products from "./products.js";
+import {products, productsFetch} from "./products.js";
 import {addToCart, removeFromCart} from "./incDecCart.js"
 
 const populateProducts = () => {
@@ -12,7 +12,7 @@ const populateProducts = () => {
     fragment.appendChild(productDataContainer)
     const productInfo = document.createElement("h3")
     productDataContainer.appendChild(productInfo)
-    productInfo.textContent = `This is the inner ${productData.name} ($${productData.price})`
+    productInfo.textContent = `${productData.name} ($${productData.price})`
     
     //attach buttons with functions & total of each item in the cart
     const buttonsContainer = document.createElement("div")

@@ -1,5 +1,5 @@
 import { cart } from "./cart.js";
-import products from "./products.js"
+import {products, productsFetch} from "./products.js";
 
 const showCart = () => {
 

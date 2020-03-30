@@ -4,7 +4,12 @@ import {addToCart, removeFromCart} from "./incDecCart.js"
 const populateProducts = () => {
   const fragment = document.createDocumentFragment()
   const productsContainer = document.querySelector("[data-products-container]")
-  
+
+  if (!products) {
+    console.log("theres no produts m'lord!")
+    return
+  }
+
   products.map(productData => {
 
     //show data

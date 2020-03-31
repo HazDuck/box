@@ -22,7 +22,7 @@ const showCheckout = () => {
     console.log('consent', document.querySelector('input[name="consent"]:checked') ? document.querySelector('input[name="consent"]:checked').value : 'nuff guv')
     const data = {
       "id" : 44,
-      "name" : "a dragon",
+      "name" : "a dragony",
       "price" : 13
     }
     
@@ -39,22 +39,6 @@ const showCheckout = () => {
       console.log(response)                              
     }
     postData()
-
-    
-
-    // $.ajax({
-    //   type: 'POST',
-    //   data: JSON.stringify(data),
-    //   url: 'localhost:3000/users/addorder',
-    //   headers: 'application/json',
-    //   dataType: 'JSON'
-    // }).done(function( response ) {
-    //   if (response.msg === '') {
-    //     console.log('twas an honor my lord!')
-    //   } else {
-    //     alert('Error: ' + response.msg);
-    //   }
-    // })
   })
   
   return checkout

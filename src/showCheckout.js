@@ -20,6 +20,35 @@ const showCheckout = () => {
   document.querySelector('[data-submit-checkout]').addEventListener('click', (e) => {
     e.preventDefault()
     console.log('consent', document.querySelector('input[name="consent"]:checked') ? document.querySelector('input[name="consent"]:checked').value : 'nuff guv')
+    
+    // const postData = async () => {
+    //   const response = await fetch('http://localhost:3000/users/addorder', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //     },
+    //     body: JSON.stringify({hello: 19})
+    //   })
+    //   .then(repsonse => response.json())
+    //   .catch(error => {
+    //     console.warn('not able to post')
+    //   })
+    //   console.log(response)                              
+    // }
+    // postData()
+
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify({hello: 19}),
+      url: 'localhost:3000/users/addorder',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      dataType: 'JSON'
+    }).done(function( response ) {
+      console.log('response', response)
+    })
   })
   
   return checkout

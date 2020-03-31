@@ -10,4 +10,19 @@ router.get('/products', function(req, res) {
   });
 });
 
+// POST required cart data and checkout info to db
+router.post('/addorder', function(req, res) {
+  var collection = db.get('orders')
+  var db = req.db
+  //get the products id and quantity
+  // var products = req.body.products
+  collection.insert(req.body, 
+    function(err, result) {
+      res.send(
+        (err === null) ? {msg: 'that there did a thing'} : {msg: err}
+      )
+    }
+  )
+})
+
 module.exports = router;

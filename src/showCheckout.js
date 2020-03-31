@@ -20,35 +20,41 @@ const showCheckout = () => {
   document.querySelector('[data-submit-checkout]').addEventListener('click', (e) => {
     e.preventDefault()
     console.log('consent', document.querySelector('input[name="consent"]:checked') ? document.querySelector('input[name="consent"]:checked').value : 'nuff guv')
+    const data = {
+      "id" : 44,
+      "name" : "a dragon",
+      "price" : 13
+    }
     
-    // const postData = async () => {
-    //   const response = await fetch('http://localhost:3000/users/addorder', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Accept': 'application/json',
-    //     },
-    //     body: JSON.stringify({hello: 19})
-    //   })
-    //   .then(repsonse => response.json())
-    //   .catch(error => {
-    //     console.warn('not able to post')
-    //   })
-    //   console.log(response)                              
-    // }
-    // postData()
+    const postData = async () => {
+      const response = await fetch('http://localhost:3000/users/addorder', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+      .then(repsonse => response.json())
+      .catch(error => {
+        console.warn('not able to post')
+      })
+      console.log(response)                              
+    }
+    postData()
 
-    $.ajax({
-      type: 'POST',
-      data: JSON.stringify({hello: 19}),
-      url: 'localhost:3000/users/addorder',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      dataType: 'JSON'
-    }).done(function( response ) {
-      console.log('response', response)
-    })
+    
+
+    // $.ajax({
+    //   type: 'POST',
+    //   data: JSON.stringify(data),
+    //   url: 'localhost:3000/users/addorder',
+    //   headers: 'application/json',
+    //   dataType: 'JSON'
+    // }).done(function( response ) {
+    //   if (response.msg === '') {
+    //     console.log('twas an honor my lord!')
+    //   } else {
+    //     alert('Error: ' + response.msg);
+    //   }
+    // })
   })
   
   return checkout

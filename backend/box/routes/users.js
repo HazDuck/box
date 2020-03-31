@@ -12,8 +12,8 @@ router.get('/products', function(req, res) {
 
 // POST required cart data and checkout info to db
 router.post('/addorder', function(req, res) {
-  var collection = db.get('orders')
   var db = req.db
+  var collection = db.get('products')
   //get the products id and quantity
   // var products = req.body.products
   collection.insert(req.body, 

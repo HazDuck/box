@@ -14,8 +14,11 @@ router.get('/products', function(req, res) {
 router.post('/addorder', function(req, res) {
   var db = req.db
   var collection = db.get('orders')
-  //get the products id and quantity
-  // var products = req.body.products
+  
+  // const data = Object.assign({}, req.body, {howdy: 'hellllo'})
+  // console.log(data)
+
+
   collection.insert(req.body, 
     function(err, result) {
       res.send(

@@ -1,17 +1,15 @@
+import { cart } from "./cart.js"
+
 const showCheckout = () => {
   const checkout = document.createElement("div")
   checkout.setAttribute('checkout-select', '')
   const checkoutForm = `
     <h1>Checkout</h1>
     <form>
-      <label for="fname">First name:</label>
-      <input type="text" id="fname" name="fname">
-      <label for="lname">Last name:</label>
-      <input type="text" id="lname" name="lname">
-      <label for="address">Address:</label>
-      <input type="text" id="address" name="address">
-      <input type="checkbox" id="consent" name="consent" value="true">
-      <label for="consent">i agree to all them dutty things</label>
+      <label for="delivery">Delivery Note:</label>
+      <input type="text" id="delivery" name="delivery">
+      <input type="checkbox" id="shipping" name="shipping" value="true">
+      <label for="shipping">Next day delivery required</label>
       <input type="submit" data-submit-checkout value="Submit">
     </form>  
     `
@@ -19,14 +17,14 @@ const showCheckout = () => {
   document.querySelector('[main-container]').appendChild(checkout)
   document.querySelector('[data-submit-checkout]').addEventListener('click', (e) => {
     e.preventDefault()
-    console.log('consent', document.querySelector('input[name="consent"]:checked') ? document.querySelector('input[name="consent"]:checked').value : 'nuff guv')
-    const data = {
-      fname: document.querySelector('input[name="fname"]').value,
-      lname: document.querySelector('input[name="lname"]').value,
-      address: document.querySelector('input[name="address"]').value,
-      orders: [{productId: 99, quantity: 2}],
-      strength: 1.25
+    let data = {
+      delivery: document.querySelector('input[name="delivery"]').value,
+      shipping: document.querySelector('input[name="shipping"]').value,
+      orders: cart.products,
+      strength: cart.strength
     }
+
+    console.log(data)
     
     const postData = async () => {
       try {

@@ -21,9 +21,11 @@ const showCheckout = () => {
     e.preventDefault()
     console.log('consent', document.querySelector('input[name="consent"]:checked') ? document.querySelector('input[name="consent"]:checked').value : 'nuff guv')
     const data = {
-      "id" : 44,
-      "name" : "mr gip",
-      "price" : 13
+      fname: document.querySelector('input[name="fname"]').value,
+      lname: document.querySelector('input[name="lname"]').value,
+      address: document.querySelector('input[name="address"]').value,
+      orders: [{productId: 99, quantity: 2}],
+      strength: 1.25
     }
     
     const postData = async () => {

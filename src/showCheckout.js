@@ -22,25 +22,26 @@ const showCheckout = () => {
     console.log('consent', document.querySelector('input[name="consent"]:checked') ? document.querySelector('input[name="consent"]:checked').value : 'nuff guv')
     const data = {
       "id" : 44,
-      "name" : "a dragony",
+      "name" : "mr gip",
       "price" : 13
     }
     
     const postData = async () => {
-      const response = await fetch('http://localhost:3000/users/addorder', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-      .then(repsonse => response.json())
-      .catch(error => {
-        console.warn('not able to post')
-      })
-      console.log(response)                              
+      try {
+        const post = await fetch('http://localhost:3000/users/addorder', {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        })
+        console.log('success master!')
+        return post.json()
+      }
+      catch(error) {
+        console.warn(error, 'Could not find a post- a thousand apologies...')
+      }                             
     }
     postData()
   })
-  
   return checkout
 }
 

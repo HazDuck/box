@@ -1,11 +1,12 @@
 const productsFetch = async () => {
-  const response = await fetch('http://localhost:3000/users/products')
-  .then(response => {
-    return response.json()
-  }).catch(error => {
+  try {
+    const response = await fetch('http://localhost:3000/users/products')
+    .then(response => response.json())
+    products = response
+  }
+  catch(error) {
     console.warn('could not find prodcut data- run for the hills!')
-  })
-  products = response
+  } 
 }
 
 let products 

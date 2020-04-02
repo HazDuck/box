@@ -23,7 +23,7 @@ router.post('/addorder', function(req, res) {
   //the db
   productsCollection.find({})
   .then(function(products) {
-    const updatedData = products.map(function(product) {
+    var updatedData = products.map(function(product) {
       var ordersToUpdate = data.orders.filter(function(item) {
         return product.id == item.productId
       })
@@ -32,7 +32,23 @@ router.post('/addorder', function(req, res) {
       }
       return Object.assign({}, ordersToUpdate[0], {price: product.price})
     })
-    return Object.assign({}, data, {orders: [...updatedData]})
+
+    var newData = Object.assign({}, data, {
+      orders: [...updatedData]
+    })
+    
+    //calculate the total price based on orders, discount and box strength
+    function calculateTotalPrice (newData) {
+      var isDiscountRequired = newData => newData.orders.map(product => product.quantity).reduce((total, num) => total + num) >= 50 ? true : false
+      var discountValue = isDiscountRequired(newData) ? 0.85 : 1
+      var totalPrice = newData.orders.map(product => product.price * product.quantity).reduce((total, num) => total + num)
+      
+      // update the newData object
+      newData.discount = discountValue
+      newData.totalPrice = newData.strength ? (totalPrice * newData.strength)*discountValue : totalPrice*discountValue
+      return newData
+    }
+    return calculateTotalPrice(newData)
   })
   .then(function(updatedData){
     ordersCollection.insert(updatedData, 

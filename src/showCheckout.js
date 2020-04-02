@@ -23,8 +23,6 @@ const showCheckout = () => {
       orders: cart.products,
       strength: cart.strength
     }
-
-    console.log(data)
     
     const postData = async () => {
       try {

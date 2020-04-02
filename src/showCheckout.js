@@ -31,14 +31,13 @@ const showCheckout = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
         })
-        console.log('success master!')
-        return post.json()
+        return await post.json()
       }
       catch(error) {
         console.warn(error, 'Could not find a post- a thousand apologies...')
       }                             
     }
-    postData()
+    postData().then(data => console.log(data.msg))
   })
   return checkout
 }

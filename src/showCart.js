@@ -10,7 +10,8 @@ const showCart = () => {
 
   const calculatePrice = product => product.quantity*product.price
 
-  const populateCart = () =>`<tr><th>Size</th><th>Qty</th><th>Price</th></tr>` + 
+  const populateCart = () =>
+  `<tr><th>Size</th><th>Qty</th><th>Price</th></tr>` + 
   products.map(product => 
     `<tr data-product=${product.id}>
       <td>${product.name}</td>
@@ -28,8 +29,6 @@ const showCart = () => {
       <td>Total price</td>
       <td>$${cart.totalPrice.toFixed(2)}<td>
     </tr>`
-    const rogue = document.getElementById('text')
-    // rogue.textContent =''
     const cartContainer = document.querySelector("[data-cart-container]")
     cartContainer.innerHTML = populateCart()
   }

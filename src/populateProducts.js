@@ -15,7 +15,7 @@ const populateProducts = () => {
     //show data
     const productDataContainer = document.createElement("li")
     fragment.appendChild(productDataContainer)
-    const productInfo = document.createElement("h3")
+    const productInfo = document.createElement("h5")
     productDataContainer.appendChild(productInfo)
     productInfo.textContent = `${productData.name} ($${productData.price})`
     
@@ -25,7 +25,7 @@ const populateProducts = () => {
     const decButton = document.createElement("button")
     decButton.setAttribute('data-decrease', productData.id)
     decButton.textContent = '-'
-    // decButton.className = "btn btn-warning"
+    decButton.className = "btn-primary sm"
     buttonsContainer.appendChild(decButton)
     decButton.addEventListener('click', (e) => {
       removeFromCart(e.target.dataset.decrease)
@@ -38,7 +38,7 @@ const populateProducts = () => {
 
     const incButton = document.createElement("button")
     incButton.setAttribute('data-increase', productData.id)
-    // incButton.classList = "btn btn-warning"
+    incButton.classList = "btn-primary sm"
     incButton.textContent = '+'
     incButton.addEventListener('click', (e) => {
       addToCart(e.target.dataset.increase)

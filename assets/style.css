@@ -1,9 +1,53 @@
+body {
+  margin: 32px;
+  font-family: 'Roboto', sans-serif; }
+
 h1 {
-  color: #17a2b8; }
+  color: #17a2b8;
+  text-align: center; }
+
+.btn-primary {
+  padding: 16px;
+  text-align: center;
+  background: #17a2b8;
+  color: #FFF;
+  border: none;
+  border-radius: 3px;
+  display: block; }
+
+.sm {
+  padding: 10px;
+  margin: 10px; }
 
 .container {
   display: flex;
-  justify-content: space-around;
-  margin: 32px; }
+  justify-content: space-between;
+  margin-top: 30px; }
+  .container > div {
+    width: 60%; }
   .container ul {
-    list-style: none; }
+    list-style: none;
+    padding-left: 0 !important; }
+    .container ul li {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      background-color: #d3d3d3;
+      padding: 16px; }
+      .container ul li > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+  .container > table {
+    width: 30%;
+    background-color: #d3d3d3;
+    margin-top: 15px;
+    padding: 16px; }
+    .container > table .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px; }
+    .container > table tr, .container > table th {
+      border-bottom: 1px solid #FFF; }

@@ -13,7 +13,7 @@ const showStrength = () => {
       <label for="female">Strong +10%</label><br>
       <input type="radio" id="xxxstrong" name="strength" value="1.25">
       <label for="other">Extra Strong +25%</label>
-      <button class="btn btn-info" type="submit" name data-continue="strength">Continue</button>
+      <button class="btn-primary" type="submit" name data-continue="strength">Continue</button>
     </form>  
     `
 

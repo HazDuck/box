@@ -6,7 +6,6 @@ const showStrength = () => {
   const strengthSelect = document.createElement("div")
   strengthSelect.setAttribute('strength-select', '')
   const strengthSelectInner = `
-    <h1>Choose your box strength</h1>
     <form>
       <input type="radio" id="standard" name="strength" value="1" checked>
       <label for="male">Standard</label><br>
@@ -14,7 +13,7 @@ const showStrength = () => {
       <label for="female">Strong +10%</label><br>
       <input type="radio" id="xxxstrong" name="strength" value="1.25">
       <label for="other">Extra Strong +25%</label>
-      <button type="submit" name data-continue="strength">Continue</button>
+      <button class="btn btn-info" type="submit" name data-continue="strength">Continue</button>
     </form>  
     `
 
@@ -27,8 +26,8 @@ const showStrength = () => {
     const newCart = Object.assign({}, cart, {strength: strength})
     updateCart(newCart)
     showCart()
-    console.log(cart)
-
+    // console.log(cart)
+    document.querySelector('[main-title]').textContent = 'Checkout'
     document.querySelector('[main-container]').replaceChild(
       showCheckout(),
       document.querySelector('[strength-select]')

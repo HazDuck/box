@@ -6,6 +6,7 @@ const addButtonEventListener = () => {
       showStrength(), 
       document.querySelector('[product-select]')
     )
+    document.querySelector('[main-title]').textContent = 'Choose your box strength'
   })
 }
 

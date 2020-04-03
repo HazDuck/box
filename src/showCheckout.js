@@ -4,7 +4,6 @@ const showCheckout = () => {
   const checkout = document.createElement("div")
   checkout.setAttribute('checkout-select', '')
   const checkoutForm = `
-    <h1>Checkout</h1>
     <form>
       <label for="delivery">Delivery Note:</label>
       <input type="text" id="delivery" name="delivery">

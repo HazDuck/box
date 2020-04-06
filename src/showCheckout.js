@@ -5,11 +5,15 @@ const showCheckout = () => {
   checkout.setAttribute('checkout-select', '')
   const checkoutForm = `
     <form>
-      <label for="delivery">Delivery Note:</label>
-      <input type="text" id="delivery" name="delivery">
-      <input type="checkbox" id="shipping" name="shipping" value="true">
-      <label for="shipping">Next day delivery required</label>
-      <input type="submit" data-submit-checkout value="Submit">
+      <div class="options">
+        <label for="delivery">Delivery Note:</label>
+        <input type="text" id="delivery" name="delivery">
+        <div>
+          <input type="checkbox" id="shipping" name="shipping" value="true">
+          <label for="shipping">Next day delivery required</label>
+        </div>
+      </div>
+      <input class="btn-primary" type="submit" data-submit-checkout value="Submit">
     </form>  
     `
   checkout.innerHTML = checkoutForm
@@ -34,9 +38,18 @@ const showCheckout = () => {
       }
       catch(error) {
         console.warn(error, 'Could not find a post- a thousand apologies...')
+        checkout.innerHTML = "Something went wrong :("
       }                             
     }
-    postData().then(data => console.log(data.msg))
+    postData().then(data => {
+      console.log(data)
+      if (data.status === 200) {
+        checkout.innerHTML = "Success!"
+      } else {
+        checkout.innerHTML = "Something went wrong :("
+      } 
+    }
+    )
   })
   return checkout
 }

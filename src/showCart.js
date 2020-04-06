@@ -30,7 +30,7 @@ const showCart = () => {
       <td>$${cart.totalPrice.toFixed(2)}<td>
     </tr>`
     const cartContainer = document.querySelector("[data-cart-container]")
-    cartContainer.innerHTML = populateCart()
+    cartContainer.innerHTML = populateCart() 
   }
   
   export default showCart

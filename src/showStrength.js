@@ -7,12 +7,14 @@ const showStrength = () => {
   strengthSelect.setAttribute('strength-select', '')
   const strengthSelectInner = `
     <form>
+    <div class="options">
       <input type="radio" id="standard" name="strength" value="1" checked>
       <label for="male">Standard</label><br>
       <input type="radio" id="strong" name="strength" value="1.1">
       <label for="female">Strong +10%</label><br>
       <input type="radio" id="xxxstrong" name="strength" value="1.25">
       <label for="other">Extra Strong +25%</label>
+    </div>
       <button class="btn-primary" type="submit" name data-continue="strength">Continue</button>
     </form>  
     `

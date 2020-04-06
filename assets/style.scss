@@ -16,6 +16,7 @@ h1 {
   border: none;
   border-radius: 3px;
   display: block;
+  margin-top: 10px;
 }
 
 .sm {
@@ -41,7 +42,6 @@ h1 {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
       background-color: #d3d3d3;
       padding: 16px;
 
@@ -58,15 +58,21 @@ h1 {
     background-color:#d3d3d3;
     margin-top: 15px;
     padding: 16px;
-
+    
     .cart-total {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
     }
-
+    
     tr, th {
       border-bottom: 1px solid #FFF; 
     }
+  }
+  
+  .options {
+    padding: 16px;
+    background-color:#d3d3d3;
+    margin-top: 15px;
   }
 }

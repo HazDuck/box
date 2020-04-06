@@ -4,6 +4,7 @@ let cart = {
 }
 
 const calculateTotalPrice = (cart, discount) => {
+  if (!cart.products.length > 0 ) return
   const totalPrice = cart.products.map(product => product.price * product.quantity).reduce((total, num) => total + num)
   const discountValue = discount ? 0.85 : 1
   cart.discount = discountValue
@@ -11,8 +12,11 @@ const calculateTotalPrice = (cart, discount) => {
   return cart
 }
 
-const isDiscountRequired = cart => cart.products.map(product => product.quantity)
-.reduce((total, num) => total + num) >= 50 ? true : false
+const isDiscountRequired = cart => {
+  if (!cart.products.length > 0 ) return
+  cart.products.map(product => product.quantity)
+  .reduce((total, num) => total + num) >= 50 ? true : false
+}
 
 const updateCart = newCart => {
   const discount = isDiscountRequired(newCart)

@@ -65,7 +65,17 @@ router.post('/addorder', [check('delivery').trim().escape()],
     ordersCollection.insert(updatedData, 
       function(err, result) {
         res.send(
-          (err === null) ? {msg: 'successfully uploaded order'} : {msg: err}
+          (err === null) ? {
+            status: 200,
+            msg: 'successfully uploaded order', 
+            data: updatedData
+          } 
+          : 
+          {
+            status: 500,
+            msg: err,
+            data: 'no data as an error occured'
+          }
         )
       }
     )

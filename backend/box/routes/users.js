@@ -14,6 +14,7 @@ router.get('/products', function(req, res) {
 });
 
 // POST required cart data and checkout info to db
+//small amount of data sanitization 
 router.post('/addorder', [check('delivery').trim().escape()],
   function(req, res) {
     var db = req.db
@@ -61,6 +62,7 @@ router.post('/addorder', [check('delivery').trim().escape()],
 
       return calculateTotalPrice(newData)
   })
+  //build responses to post
   .then(function(updatedData){
     ordersCollection.insert(updatedData, 
       function(err, result) {
